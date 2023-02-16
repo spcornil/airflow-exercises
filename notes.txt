@@ -12,11 +12,18 @@ docker-compose ps
 docker-compose down
 
 ### Airflow CLI ###
-
+###################
 # Access CLI inside container
 docker exec -it airflow-airflow-scheduler-1 bash
 
 # Check if our create_table task runs successfully
 airflow tasks test user_processing create_table 2022-01-01
 
-#ctrl-D to exit the container
+# Check out postgres db and select all users
+# IF DAG ran correctly we should see at least one user in our users table.
+docker exec -it airflow-postgres-1 bash
+psql -Uairflow
+SELECT * FROM users;
+
+# ctrl-D to exit the container
+###################
