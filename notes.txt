@@ -27,3 +27,7 @@ SELECT * FROM users;
 
 # ctrl-D to exit the container
 ###################
+
+docker-compose --profile flower up -d
+
+docker-compose -f docker-compose-es.yaml --profile flower up -d
